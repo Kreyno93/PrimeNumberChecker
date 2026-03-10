@@ -4,19 +4,25 @@ from primePy import primes
 
 
 def is_prime_basic(num):
-    if num < 2:
-        return False
-    for i in range(2, num):
-        if num % i == 0:
+    # write numbers into results.txt file
+    with open("results_basic.txt", "a") as file:
+        if num < 2:
             return False
-    return True
+        for i in range(2, num):
+            if num % i == 0:
+                return False
+        file.write(f"{num} is a prime number.\n")
+        return True
 
 
 def alternative_prime_checker_with_module():
     # Prime number checker using primePy library
-    for number in range(1, 251):
-        if primes.check(number):
-            print(f"{number} is a prime number.")
+    # write numbers into results.txt file
+    with open("results_module.txt", "w") as file:
+        for number in range(1, 251):
+            if primes.check(number):
+                file.write(f"{number} is a prime number.\n")
+                print(f"{number} is a prime number.")
 
 
 if __name__ == "__main__":
